@@ -79,3 +79,15 @@ VALUES
 
 DELETE FROM watch;
 SELECT * FROM watch;
+
+CREATE TABLE time(
+	`time` DATETIME
+);
+
+DESC time;
+
+INSERT INTO time
+VALUES
+	( now() );
+    
+SELECT * FROM time;
