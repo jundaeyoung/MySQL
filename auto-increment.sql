@@ -57,3 +57,25 @@ VALUES
     ('김철수', 'C@naver.com', '서울시 강남구 역삼동');
 
 SELECT * FROM customer;
+
+-- 나혼자 연습해보기
+CREATE TABLE watch(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    price INT NOT NULL,
+    order_date DATE DEFAULT (current_date)
+);
+
+ALTER TABLE watch MODIFY price INT DEFAULT 0 NOT NULL; 
+
+DESC watch;
+DROP TABLE watch;
+INSERT INTO watch(name, price, order_date)
+VALUES
+	('오데마피게', 200000000,DEFAULT),
+    ('롤렉스',30000000,DEFAULT),
+    ('모리스 라크로와', 2000000, '2022-02-22'),
+    ('파텍필립',DEFAULT,DEFAULT);
+
+DELETE FROM watch;
+SELECT * FROM watch;
