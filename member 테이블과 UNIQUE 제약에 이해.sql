@@ -60,7 +60,17 @@ VALUES
     ('변호인','양우석', 20131218,'드라마',8.41),
     ('군함도','류승완', 20170726,'사극',8.01),
     ('암살','최동훈', 20150722,'액션',8.37);
-    
-DROP TABLE movie;
+   
+   
+-- 영화 괴물의 rating을 '9.25'로 수정
+UPDATE movie
+SET rating = 9.25
+WHERE title = '괴물';
+-- 영화 명량의 상영일을 20140729로 수정
+UPDATE movie
+SET release_date = 20140729
+WHERE title = '명량';
+
+-- DROP TABLE movie;
 SELECT * FROM movie;
     
