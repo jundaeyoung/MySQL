@@ -59,40 +59,45 @@ GROUP BY dept_no
 HAVING dept_no = 'd001';
 
 
-SELECT * FROM departments;
+SELECT * FROM dept_emp
 
+;
 
+use myblog;
 
+SELECT * FROM user;
+DELETE FROM user;
 
 CREATE TABLE user(
-	id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(10) NOT NULL,
-    user_id VARCHAR(40) NOT NULL,
+	id VARCHAR(30) NOT NULL,
+    password VARCHAR(30) NOT NULL,
+    tel VARCHAR(30) NOT NULL,
+    email VARCHAR(30) NOT NULL
+);
+
+INSERT INTO user
+VALUES 
+	('jdy1787','1234','010-1111-1111','jdy1787@naver.com'),
+    ('1234','1234','010-1234-1234','1234@naver.com');
+
+UPDATE `user`
+SET id = 'jdy1787',
+	password='123',
+    tel='010-2222-2222',
+    email='1111@naver.com'
+WHERE id ='jdy1787';
+
+CREATE DATABASE demo5;
+use demo5;
+
+CREATE TABLE user(
+	id INT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
-    address VARCHAR(50) NOT NULL,
-    tel VARCHAR(20) NOT NULL
+    PRIMARY KEY(id)
 );
-CREATE TABLE buy(
-	id INT AUTO_INCREMENT PRIMARY KEY,
-    buy_date DATE NOT NULL,
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES user(id)
-);
+SELECT * FROM user;
+Drop table users;
+SHOW VARIABLES LIKE 'c%';
 
-CREATE TABLE clothes(
-	id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(20) NOT NULL,
-    price INT NOT NULL,
-    color VARCHAR(20) NOT NULL,
-    buy_id INT,
-	FOREIGN KEY (buy_id) REFERENCES buy(id)
-);
-
-INSERT INTO 
-user(name,user_id,password,email,address,tel)
-VALUES
-	('대영','jdy1787','1234','jdy@naver.com','부산','01011111111');
-
-SELECT * FROM user
-WHERE user_id = 'jdy1787' AND password = '1234';
