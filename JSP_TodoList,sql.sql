@@ -23,4 +23,6 @@ CREATE TABLE Category(
 ALTER TABLE TodoList
 ADD COLUMN category_id INT, 
 ADD CONSTRAINT fk_category FOREIGN KEY (category_id)
-REFERENCES category(id)
+REFERENCES category(id) 
+ON UPDATE CASCADE 
+ON DELETE CASCADE
