@@ -124,7 +124,7 @@ on h.w_account_id = wa.id
 where h.d_account_id = 1 or h.w_account_id=1;
 
 
--- 입금 내역 : 결정 쿼리
+-- 입금 내역 : 쿼리 결정
 SELECT h.id, h.amount, h.d_balance AS balance,
 	   h.created_at,
        ifnull(wa.number,'ATM') AS sender,
@@ -136,6 +136,42 @@ LEFT JOIN account_tb AS wa
 ON h.w_account_id = wa.id
 WHERE h.d_account_id = 1;
 
+-- 출금 내역
+select h.id, h.amount, h.w_balance as balance, h.created_at,
+	   ifnull(da.number, 'AMT') as recevier, 
+       wa.number as sender 
+from history_tb as h 
+left join account_tb as wa
+on h.w_account_id = wa.id 
+left join account_tb as da 
+on h.d_account_id = da.id 
+where h.w_account_id = 1;
+
+-- 입출금 내역
+select h.id, h.amount, h.w_balance as balance, h.created_at,
+	   ifnull(da.number, 'AMT') as receiver, 
+       wa.number as sender 
+from history_tb as h 
+left join account_tb as wa
+on h.w_account_id = wa.id 
+left join account_tb as da 
+on h.d_account_id = da.id 
+where h.w_account_id = 1 OR h.d_account_id =1;
+
+-- CASE WHEN THEN END
+SELECT h.id, h.amount, 
+	CASE WHEN h.w_account_id = 1 THEN (h.w_balance)
+		 WHEN h.d_account_id = 1 THEN (h.d_balance)
+         END AS balance,
+         ifnull(wa.number,'ATM') AS sender,
+         ifnull(da.number,'ATM') AS receiver,
+         h.created_at
+FROM history_tb AS h 
+LEFT JOIN account_tb AS da 
+ON h.d_account_id = da.id 
+LEFT JOIN account_tb AS wa
+ON h.w_account_id = wa.id 
+WHERE h.w_account_id = 1 OR h.d_account_id =1;
 
 SELECT * FROM account_tb;
 SELECT * FROM user_tb;
