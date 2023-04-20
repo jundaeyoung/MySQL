@@ -1,16 +1,20 @@
 use myblog;
 
 SELECT * FROM user;
-SELECT * FROM reservation
-WHERE user_id ='jdy1787';
-DELETE FROM reply;
-SELECT * FROM home;
 SELECT * FROM reservation;
-SELECT * FROM reply;
+
+SELECT * FROM homeinfo;
+SELECT * FROM home;
+desc homeinfo;
+update home
+set image='images/home1.png'
+WHERE id=1;
+SELECT * FROM reservation;
 SELECT format(avg(rating),2)as rating FROM reply
 WHERE home_id='1';
+ ALTER TABLE home AUTO_INCREMENT=11;
  DELETE FROM reply WHERE user_id='jdy1787'AND id='44';
-
+delete from home where id=21;
 CREATE TABLE HomeInfo(
 	title VARCHAR(200),
 	location VARCHAR(200),
@@ -34,11 +38,30 @@ CREATE TABLE HomeInfo(
 	FOREIGN KEY(home_id) REFERENCES home(id)
 );
 SELECT * FROM homeinfo;
-delete from homeinfo 
-where home_id=2;
+
 insert into homeinfo
 values
-	('정면오션테라스ㅡ광안리불꽃축제 명당','❣ 슈퍼호스트 · 수영구, 부산, 한국','images/home5/home5_1.png','images/home5/home5_2.png','images/home5/home5_3.png','images/home5/home5_4.png','images/home5/home5_5.png','그랜드테라스 님이 호스팅하는 레지던스 전체','최대 인원 2명 · 원룸 · 침대 1개 · 욕실 1개','superhost1.png','그랜드테라스님은 슈퍼호스트입니다','슈퍼호스트는 풍부한 경험과 높은 평점을 자랑하며 게스트가 숙소에서 편안히 머무를 수 있도록 최선을 다하는 호스트입니다..','checkin.png','셀프 체크인','열쇠 보관함을 이용해 체크인하세요.','key.png','순조로운 체크인 과정','최근 숙박한 게스트 중 100%가 체크인 과정에 별점 5점을 준 숙소입니다.',5);
+	(
+    'OceanView / 신규오픈 / 윤슬 / 프라이빗 / 수변공원 ',
+    '❣ 슈퍼호스트 · 수영구, 부산, 한국',
+    'images/home9/home9_1.png',
+    'images/home9/home9_2.png',
+    'images/home9/home9_3.png',
+    'images/home9/home9_4.png',
+    'images/home9/home9_5.png',
+    'Olivia 님이 호스팅하는 공동 주택 전체',
+    '최대 인원 4명침실 1개침대 1개욕실 1개',
+    'desk.png',
+    '업무 전용 공간',
+    '와이파이가 제공되어 업무를 보기에 적합한 방입니다',
+    'location.png',
+    '훌륭한 숙소 위치',
+    '최근 숙박한 게스트 중 100%가 위치에 별점 5점을 준 숙소입니다.',
+    'key.png',
+    '순조로운 체크인 과정',
+    '최근 숙박한 게스트 중 100%가 체크인 과정에 별점 5점을 준 숙소입니다.',
+    9
+    );
 CREATE TABLE user(
 	id VARCHAR(30) NOT NULL UNIQUE,
     password VARCHAR(30) NOT NULL,
@@ -80,7 +103,7 @@ VALUES
 
 SELECT * FROM home
 WHERE name like '%한국' ;    
-
+ 
 ALTER table home AUTO_INCREMENT=1;
 DELETE from home;
 CREATE TABLE reply(

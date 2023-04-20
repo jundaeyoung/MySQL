@@ -63,3 +63,15 @@ SELECT * FROM dept_emp
 
 ;
 
+-- 입사일이 2000년 01 01 이후인 남자 사원의 부서와 이름 그리고 입사일을 구하시오
+SELECT * FROM employees;
+SELECT dept_name,first_name,last_name,hire_date
+FROM employees AS e
+LEFT JOIN dept_emp AS d
+ON e.emp_no = d.emp_no
+LEFT JOIN departments AS dp
+ON dp.dept_no = d.dept_no
+WHERE hire_date>'2000-01-01' AND gender='M';
+
+
+SELECT * FROM titles;
