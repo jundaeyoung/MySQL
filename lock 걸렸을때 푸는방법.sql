@@ -1,0 +1,5 @@
+
+-- 연결된 프로세스 확인하기
+SHOW PROCESSLIST;
+SHOW FULL PROCESSLIST;
+kill 21;
